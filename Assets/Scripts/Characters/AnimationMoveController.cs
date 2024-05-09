@@ -1,10 +1,8 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Animator),typeof(GroundedCheck))]
+[RequireComponent(typeof(Animator),typeof(GroundedCheck),typeof(SmoothedSpeedCheck))]
 public class AnimationMoveController : MonoBehaviour
 {
-    [SerializeField]
-    private float SpeedChangeRate = 10.0f;
     [SerializeField]
     private float MaxRotateSpeed = 360f;
     [SerializeField]
@@ -20,10 +18,9 @@ public class AnimationMoveController : MonoBehaviour
 
     private Animator _animator;
     private GroundedCheck _groundedCheck;
+    private SmoothedSpeedCheck _smoothedSpeedCheck;
+    private Vector3 _smoothedSpeed => _smoothedSpeedCheck.SmoothedSpeed;
 
-    private Vector3 _lastPosition;
-    private Vector3 _instantaneousSpeed;
-    private Vector3 _smoothedSpeed;
     private const float VELOCITY_ERROR = 0.001f;
 
     private int _animIDSpeed;
@@ -36,23 +33,13 @@ public class AnimationMoveController : MonoBehaviour
         _animator = GetComponent<Animator>();
         _groundedCheck = GetComponent<GroundedCheck>();
         AssignAnimationIDs();
-        _lastPosition = transform.position;
+        _smoothedSpeedCheck = GetComponent<SmoothedSpeedCheck>();
     }
 
     private void Update()
     {
-        UpdateSpeed();
         GroundedCheck();
         Move();
-    }
-
-    private void UpdateSpeed()
-    {
-        var _currentPosition = transform.position;
-        _instantaneousSpeed = (_currentPosition - _lastPosition) / Time.deltaTime;
-        _lastPosition = _currentPosition;
-        _smoothedSpeed = Vector3.Lerp(_smoothedSpeed, _instantaneousSpeed,
-                Time.deltaTime * SpeedChangeRate);
     }
 
     private void AssignAnimationIDs()

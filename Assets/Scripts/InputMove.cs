@@ -10,8 +10,6 @@ public class InputMove : MonoBehaviour
     private float Speed = 4f;
     [SerializeField]
     private float JumpSpeed = 10f;
-    [SerializeField]
-    private float JumpInterval = 0.2f;
 
     private Rigidbody _rigidbody;
 

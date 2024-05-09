@@ -14,7 +14,9 @@ public class RagdollToggle : MonoBehaviour
     [SerializeField]
     private Animator Animator;
     [SerializeField]
-    private bool StartStateIsRagdoll;
+    private bool isRagdoll;
+
+    public bool IsRagdoll => isRagdoll;
 
     private Rigidbody[] rigidbodies;
     private Collider[] raddollsColliders;
@@ -23,7 +25,7 @@ public class RagdollToggle : MonoBehaviour
     {
         rigidbodies =RagdollRoot.GetComponentsInChildren<Rigidbody>();
         raddollsColliders = RagdollRoot.GetComponentsInChildren<Collider>();
-        ToggleRagdoll(StartStateIsRagdoll) ;
+        ToggleRagdoll(isRagdoll) ;
     }
 
     private void Update()
@@ -36,6 +38,7 @@ public class RagdollToggle : MonoBehaviour
 
     private void ToggleRagdoll(bool isActive)
     {
+        isRagdoll = isActive;
         myCollider.enabled = !isActive;
         Vector3 velocity = myRigidbody.velocity;
         myRigidbody.isKinematic = isActive;
@@ -63,6 +66,9 @@ public class RagdollToggle : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        ToggleRagdoll(true);
+        if(other.tag == "enableRagdoll")
+        {
+            ToggleRagdoll(true);
+        }
     }
 }
