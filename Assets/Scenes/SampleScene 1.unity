@@ -1972,7 +1972,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c2dcb287ab8f864ea05c49b93cd7e91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LevelName: SampleScene
+  LevelName: SampleScene 1
 --- !u!114 &2000314356
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2194,7 +2194,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c2dcb287ab8f864ea05c49b93cd7e91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LevelName: SampleScene
+  LevelName: SampleScene 2
 --- !u!114 &2051448303
 MonoBehaviour:
   m_ObjectHideFlags: 0
