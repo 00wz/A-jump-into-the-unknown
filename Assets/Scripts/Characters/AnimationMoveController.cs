@@ -24,7 +24,7 @@ public class AnimationMoveController : MonoBehaviour
     private Vector3 _lastPosition;
     private Vector3 _instantaneousSpeed;
     private Vector3 _smoothedSpeed;
-    private float _rotationVelocity;
+    private const float VELOCITY_ERROR = 0.001f;
 
     private int _animIDSpeed;
     private int _animIDGrounded;
@@ -88,7 +88,7 @@ public class AnimationMoveController : MonoBehaviour
         Vector3 smoothedHorizontalSpeed = new Vector3(_smoothedSpeed.x, 0.0f, _smoothedSpeed.z);
         float smoothedHorizontalSpeedMagnitude = smoothedHorizontalSpeed.magnitude;
 
-        if(RotateToMovementDirection && smoothedHorizontalSpeed != Vector3.zero)
+        if (RotateToMovementDirection && smoothedHorizontalSpeedMagnitude > VELOCITY_ERROR)// smoothedHorizontalSpeed != Vector3.zero)
         {
             float targetRotation = Mathf.Atan2(_smoothedSpeed.x, _smoothedSpeed.z) * Mathf.Rad2Deg;
             targetRotation = Mathf.MoveTowardsAngle(transform.eulerAngles.y, targetRotation, MaxRotateSpeed * Time.deltaTime);

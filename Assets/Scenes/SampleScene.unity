@@ -245,7 +245,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 8
+  m_Constraints: 120
   m_CollisionDetection: 0
 --- !u!136 &908850270
 CapsuleCollider:
@@ -283,6 +283,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 4
+  JumpSpeed: 5
+  JumpInterval: 0.2
 --- !u!1 &1361616989
 GameObject:
   m_ObjectHideFlags: 0
@@ -295,7 +297,6 @@ GameObject:
   - component: {fileID: 1361616993}
   - component: {fileID: 1361616992}
   - component: {fileID: 1361616991}
-  - component: {fileID: 1361616990}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -303,33 +304,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!54 &1361616990
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1361616989}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!65 &1361616991
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -410,8 +384,8 @@ Transform:
   m_GameObject: {fileID: 1361616989}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.289952, y: 0.02404305, z: 0.004500015}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -4.23, y: 1.53, z: 0.004500015}
+  m_LocalScale: {x: 10.04, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -537,17 +511,21 @@ PrefabInstance:
       propertyPath: GroundLayers.m_Bits
       value: 39
       objectReference: {fileID: 0}
+    - target: {fileID: 231822828650949209, guid: b83f6e6791fba41428cb8de618e2bb97, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4400719006298124066, guid: b83f6e6791fba41428cb8de618e2bb97, type: 3}
       propertyPath: m_Name
       value: Character
       objectReference: {fileID: 0}
     - target: {fileID: 5654608996129043469, guid: b83f6e6791fba41428cb8de618e2bb97, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.1110928
+      value: -0.44
       objectReference: {fileID: 0}
     - target: {fileID: 5654608996129043469, guid: b83f6e6791fba41428cb8de618e2bb97, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.065553
+      value: 2.47
       objectReference: {fileID: 0}
     - target: {fileID: 5654608996129043469, guid: b83f6e6791fba41428cb8de618e2bb97, type: 3}
       propertyPath: m_LocalPosition.z
