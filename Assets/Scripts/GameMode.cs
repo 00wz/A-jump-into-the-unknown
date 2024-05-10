@@ -15,6 +15,13 @@ public class GameMode : MonoBehaviour
     [SerializeField]
     private GameObject GameOverPanel;
 
+    [SerializeField]
+    private AudioClip[] WinAudioClips;
+    [SerializeField]
+    private AudioClip[] LoseAudioClips;
+    [Range(0, 1)]
+    public float AudioVolume = 0.5f;
+
     private bool _isEndOfGame = false;
 
     private void Start()
@@ -35,12 +42,24 @@ public class GameMode : MonoBehaviour
             if(CheckBox.CheckOverlap() != null)
             {
                 WinPanel.SetActive(true);
+                PlayRandomSound(WinAudioClips);
             }
             else
             {
                 GameOverPanel.SetActive(true);
+                PlayRandomSound(LoseAudioClips);
             }
             _isEndOfGame = true;
+        }
+    }
+
+    private void PlayRandomSound(AudioClip[] AudioClips)
+    {
+        if (AudioClips.Length > 0)
+        {
+            var index = Random.Range(0, AudioClips.Length);
+            AudioSource.PlayClipAtPoint(AudioClips[index],
+                transform.position, AudioVolume);
         }
     }
 }
