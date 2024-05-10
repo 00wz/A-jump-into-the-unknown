@@ -112,7 +112,7 @@ public class GameMode : MonoBehaviour
         {
             var index = Random.Range(0, AudioClips.Length);
             AudioSource.PlayClipAtPoint(AudioClips[index],
-                transform.position, AudioVolume);
+                SmoothedSpeedCheck.transform.position, AudioVolume);
         }
     }
 }

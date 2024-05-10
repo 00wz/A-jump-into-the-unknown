@@ -49,6 +49,17 @@ MonoBehaviour:
   CheckBox: {fileID: 0}
   WinPanel: {fileID: 0}
   GameOverPanel: {fileID: 0}
-  WinAudioClips: []
-  LoseAudioClips: []
-  AudioVolume: 0.5
+  GameOverSqrVelocity: 0.01
+  Speed: 0
+  Environment: []
+  EnvironmentWithRigitBody: []
+  WinAudioClips:
+  - {fileID: 8300000, guid: 08f5596800cda5d4c9c9648de2e4bc5f, type: 3}
+  - {fileID: 8300000, guid: 29f96ea9e0db462448938348e48c78c4, type: 3}
+  - {fileID: 8300000, guid: b0840aedc1679c547911ba8877c4482a, type: 3}
+  LoseAudioClips:
+  - {fileID: 8300000, guid: 7d9bff1a70ac9f942b0c36831c1c99ad, type: 3}
+  - {fileID: 8300000, guid: da48e063f8984cb468c6a943b9a81cbb, type: 3}
+  - {fileID: 8300000, guid: b6654c163b909f7469f51cf042ceac27, type: 3}
+  - {fileID: 8300000, guid: 374056b459e09f0449e4c6fec5bb597a, type: 3}
+  AudioVolume: 1

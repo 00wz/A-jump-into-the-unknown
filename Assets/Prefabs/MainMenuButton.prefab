@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 9117837524929784366}
   - component: {fileID: 6703751366474132058}
   - component: {fileID: 4288198009973709786}
+  - component: {fileID: 1105267531614814606}
   m_Layer: 5
   m_Name: MainMenuButton
   m_TagString: Untagged
@@ -133,6 +134,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1105267531614814606}
+        m_TargetAssemblyTypeName: PlaySoundScript, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &4288198009973709786
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -146,3 +159,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LevelName: MenuScene
+--- !u!114 &1105267531614814606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8578049875209553613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 795cbdbf6256ec342a2406e3ac9c2fbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AudioClips:
+  - {fileID: 8300000, guid: 48e48bc37f5960142befc57ec536a4e7, type: 3}
+  - {fileID: 8300000, guid: e40477ff28cb75048aa5d74bf757a33d, type: 3}
+  - {fileID: 8300000, guid: 0d164f9a6b368af4695ed05b9902ecce, type: 3}
+  AudioVolume: 0.5

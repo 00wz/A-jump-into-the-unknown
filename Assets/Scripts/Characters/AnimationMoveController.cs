@@ -91,7 +91,7 @@ public class AnimationMoveController : MonoBehaviour
 
     private void OnFootstep(AnimationEvent animationEvent)
     {
-        if (animationEvent.animatorClipInfo.weight > 0.5f)
+        if (true || animationEvent.animatorClipInfo.weight > 0.5f)
         {
             if (FootstepAudioClips.Length > 0)
             {
@@ -103,7 +103,7 @@ public class AnimationMoveController : MonoBehaviour
 
     private void OnLand(AnimationEvent animationEvent)
     {
-        if (animationEvent.animatorClipInfo.weight > 0.5f)
+        if (true || animationEvent.animatorClipInfo.weight > 0.5f)
         {
             AudioSource.PlayClipAtPoint(LandingAudioClip, transform.position, FootstepAudioVolume);
         }

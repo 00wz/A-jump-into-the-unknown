@@ -143,7 +143,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 01bafab73abc1ef45be8839cb871e5f0, type: 3}
   - {fileID: 8300000, guid: f3850de5ffb74d2469389476bdfa3f88, type: 3}
   - {fileID: 8300000, guid: c4bd2257ee0bef14ba449e4743a82946, type: 3}
-  AudioVolume: 1
+  AudioVolume: 0.9
 --- !u!81 &3723576525952504410
 AudioListener:
   m_ObjectHideFlags: 0
@@ -2877,7 +2877,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 67c8b33e424ccdc4486edf538ab91c5a, type: 3}
   - {fileID: 8300000, guid: 274649b0e221539409070ebf6c18918b, type: 3}
   - {fileID: 8300000, guid: a3194b8bbc96ef84fab1f98f4b7dae3e, type: 3}
-  FootstepAudioVolume: 0.3
+  FootstepAudioVolume: 0.1
   Grounded: 1
   RotateToMovementDirection: 1
   SmoothedSpeedCheck: {fileID: 6295092321516665468}
