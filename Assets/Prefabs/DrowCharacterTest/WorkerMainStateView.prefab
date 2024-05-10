@@ -826,6 +826,7 @@ GameObject:
   - component: {fileID: 231822828650949209}
   - component: {fileID: 8019061505138140043}
   - component: {fileID: 180644369952155443}
+  - component: {fileID: 104540195558936435}
   m_Layer: 3
   m_Name: WorkerMainStateView
   m_TagString: Untagged
@@ -882,7 +883,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfc553936c0d68943baa26ce9bb7ace0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpeedChangeRate: 10
   MaxRotateSpeed: 360
   LandingAudioClip: {fileID: 8300000, guid: 7d5c0b33d01a8fb409a5e866386c571c, type: 3}
   FootstepAudioClips:
@@ -915,8 +915,21 @@ MonoBehaviour:
   GroundedRadius: 0.28
   GroundLayers:
     serializedVersion: 2
-    m_Bits: 103
+    m_Bits: 39
   <Grounded>k__BackingField: 0
+--- !u!114 &104540195558936435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4400719006298124066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df24758db55f80c46bdcdc5aee207205, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SpeedChangeRate: 10
 --- !u!1 &4837010546264780058
 GameObject:
   m_ObjectHideFlags: 0

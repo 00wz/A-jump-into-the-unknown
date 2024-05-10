@@ -14,6 +14,14 @@ public class GameMode : MonoBehaviour
     private GameObject WinPanel;
     [SerializeField]
     private GameObject GameOverPanel;
+    [SerializeField]
+    private float GameOverSqrVelocity = 0.01f;
+    [SerializeField]
+    private float Speed = 0f;
+    [SerializeField]
+    private GameObject[] Environment;
+    [SerializeField]
+    private Rigidbody[] EnvironmentWithRigitBody;
 
     [SerializeField]
     private AudioClip[] WinAudioClips;
@@ -23,11 +31,13 @@ public class GameMode : MonoBehaviour
     public float AudioVolume = 0.5f;
 
     private bool _isEndOfGame = false;
+    private Vector3 _environmentVelocity;
 
     private void Start()
     {
         WinPanel.SetActive(false);
         GameOverPanel.SetActive(false);
+        _environmentVelocity = new Vector3(-Speed, 0f, 0f);
     }
 
     void Update()
@@ -37,19 +47,62 @@ public class GameMode : MonoBehaviour
             return;
         }
 
-        if(RagdollToggle.IsRagdoll && SmoothedSpeedCheck.SmoothedSpeed == Vector3.zero)
+        if(RagdollToggle.IsRagdoll && 
+            (SmoothedSpeedCheck.SmoothedSpeed - _environmentVelocity).sqrMagnitude 
+            <=GameOverSqrVelocity)
         {
             if(CheckBox.CheckOverlap() != null)
             {
-                WinPanel.SetActive(true);
-                PlayRandomSound(WinAudioClips);
+                WinGame();
             }
             else
             {
-                GameOverPanel.SetActive(true);
-                PlayRandomSound(LoseAudioClips);
+                LoseGame();
             }
-            _isEndOfGame = true;
+        }
+
+        MoveEnvironmentTic();
+    }
+
+    private void WinGame()
+    {
+        WinPanel.SetActive(true);
+        PlayRandomSound(WinAudioClips);
+        _isEndOfGame = true;
+    }
+
+    private void LoseGame()
+    {
+        GameOverPanel.SetActive(true);
+        PlayRandomSound(LoseAudioClips);
+        _isEndOfGame = true;
+    }
+
+    private void MoveEnvironmentTic()
+    {
+        Vector3 deltaPosition = _environmentVelocity * Time.deltaTime;
+        for(int i =0; i < Environment.Length; i++)
+        {
+            Environment[i].transform.Translate(deltaPosition, Space.World);
+            //Environment[i].transform.position += _environmentVelocity * Time.deltaTime;
+        }
+    }
+
+    private void MoveEnvironmentWithRigitBodyFixTic()
+    {
+        Vector3 deltaPosition = _environmentVelocity * Time.fixedDeltaTime;
+        for (int i = 0; i < EnvironmentWithRigitBody.Length; i++)
+        {
+            EnvironmentWithRigitBody[i].MovePosition(
+                EnvironmentWithRigitBody[i].position + deltaPosition);
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        if(!_isEndOfGame)
+        {
+            MoveEnvironmentWithRigitBodyFixTic();
         }
     }
 

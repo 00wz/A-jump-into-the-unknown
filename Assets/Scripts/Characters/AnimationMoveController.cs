@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Animator),typeof(GroundedCheck),typeof(SmoothedSpeedCheck))]
+[RequireComponent(typeof(Animator),typeof(GroundedCheck),typeof(Rigidbody))]
 public class AnimationMoveController : MonoBehaviour
 {
     [SerializeField]
@@ -15,11 +15,13 @@ public class AnimationMoveController : MonoBehaviour
     private bool Grounded = true;
     [SerializeField]
     public bool RotateToMovementDirection = true;
+    [SerializeField]
+    private SmoothedSpeedCheck SmoothedSpeedCheck;
 
     private Animator _animator;
     private GroundedCheck _groundedCheck;
-    private SmoothedSpeedCheck _smoothedSpeedCheck;
-    private Vector3 _smoothedSpeed => _smoothedSpeedCheck.SmoothedSpeed;
+    private Vector3 _smoothedSpeed => _rigidbody.velocity;//SmoothedSpeedCheck.SmoothedSpeed;
+    private Rigidbody _rigidbody;
 
     private const float VELOCITY_ERROR = 0.001f;
 
@@ -32,8 +34,9 @@ public class AnimationMoveController : MonoBehaviour
     {
         _animator = GetComponent<Animator>();
         _groundedCheck = GetComponent<GroundedCheck>();
+        _rigidbody = GetComponent<Rigidbody>();
         AssignAnimationIDs();
-        _smoothedSpeedCheck = GetComponent<SmoothedSpeedCheck>();
+        //SmoothedSpeedCheck = GetComponent<SmoothedSpeedCheck>();
     }
 
     private void Update()
