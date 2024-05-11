@@ -9,8 +9,12 @@ public class AnimationMoveController : MonoBehaviour
     private AudioClip LandingAudioClip;
     [SerializeField]
     private AudioClip[] FootstepAudioClips;
+    [SerializeField]
+    private AudioClip[] JumpAudioClips;
     [Range(0, 1)] 
     public float FootstepAudioVolume = 0.5f;
+    [Range(0, 1)] 
+    public float JumpAudioVolume = 1f;
     [SerializeField]
     private bool Grounded = true;
     [SerializeField]
@@ -60,7 +64,10 @@ public class AnimationMoveController : MonoBehaviour
         {
             _animator.SetBool(_animIDGrounded, false);
             if (_smoothedSpeed.y > 0f)
+            {
                 _animator.SetBool(_animIDJump, true);
+                PlayJampSound();
+            }
             else
                 _animator.SetBool(_animIDFreeFall, true);
         }
@@ -106,6 +113,15 @@ public class AnimationMoveController : MonoBehaviour
         if (true || animationEvent.animatorClipInfo.weight > 0.5f)
         {
             AudioSource.PlayClipAtPoint(LandingAudioClip, transform.position, FootstepAudioVolume);
+        }
+    }
+
+    private void PlayJampSound()
+    {
+        if (JumpAudioClips.Length > 0)
+        {
+            var index = Random.Range(0, JumpAudioClips.Length);
+            AudioSource.PlayClipAtPoint(JumpAudioClips[index], transform.position, JumpAudioVolume);
         }
     }
 
