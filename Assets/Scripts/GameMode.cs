@@ -22,6 +22,10 @@ public class GameMode : MonoBehaviour
     private GameObject[] Environment;
     [SerializeField]
     private Rigidbody[] EnvironmentWithRigitBody;
+    [SerializeField]
+    private GameObject[] BackgroundEnvironment;
+    [SerializeField]
+    private float BackgroundSpeed = 2.5f;
 
     [SerializeField]
     private AudioClip[] WinAudioClips;
@@ -32,12 +36,14 @@ public class GameMode : MonoBehaviour
 
     private bool _isEndOfGame = false;
     private Vector3 _environmentVelocity;
+    private Vector3 _backgroundVelocity;
 
     private void Start()
     {
         WinPanel.SetActive(false);
         GameOverPanel.SetActive(false);
         _environmentVelocity = new Vector3(-Speed, 0f, 0f);
+        _backgroundVelocity = new Vector3(-BackgroundSpeed, 0f, 0f);
     }
 
     void Update()
@@ -71,7 +77,7 @@ public class GameMode : MonoBehaviour
         _isEndOfGame = true;
     }
 
-    private void LoseGame()
+    public void LoseGame()
     {
         GameOverPanel.SetActive(true);
         PlayRandomSound(LoseAudioClips);
@@ -84,7 +90,11 @@ public class GameMode : MonoBehaviour
         for(int i =0; i < Environment.Length; i++)
         {
             Environment[i].transform.Translate(deltaPosition, Space.World);
-            //Environment[i].transform.position += _environmentVelocity * Time.deltaTime;
+        }
+        Vector3 deltaBackgroundPosition = _backgroundVelocity * Time.deltaTime;
+        for(int i =0; i < BackgroundEnvironment.Length; i++)
+        {
+            BackgroundEnvironment[i].transform.Translate(deltaBackgroundPosition, Space.World);
         }
     }
 
